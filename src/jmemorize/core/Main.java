@@ -470,25 +470,13 @@ public class Main extends Observable implements LearnSessionProvider,
     {
         m_lastLoggedThrowable = null;
     }
-    
-    private static void copyFile(File in, File out) throws IOException 
+
+    private static void copyFile(File in, File out) throws IOException
     {
-        FileChannel sourceChannel = null;
-        FileChannel destinationChannel = null;
-        try
+        try (FileChannel sourceChannel = new FileInputStream(in).getChannel();
+             FileChannel destinationChannel = new FileOutputStream(out).getChannel())
         {
-            sourceChannel = new FileInputStream(in).getChannel();
-            destinationChannel = new FileOutputStream(out).getChannel();
-            
             sourceChannel.transferTo(0, sourceChannel.size(), destinationChannel);
-        }
-        finally
-        {
-            if (sourceChannel != null)
-                sourceChannel.close();
-            
-            if (destinationChannel != null)
-                destinationChannel.close();
         }
     }
 
