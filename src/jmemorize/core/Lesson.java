@@ -33,7 +33,7 @@ public class Lesson implements CategoryObserver
     private boolean           m_canSave = false;
     private File              m_file;
     
-    private Category          m_rootCategory;
+    public Category          m_rootCategory;
     private LearnHistory      m_learnHistory = new LearnHistory();
     
     public Lesson(boolean canSave)

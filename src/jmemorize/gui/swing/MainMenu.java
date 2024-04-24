@@ -39,20 +39,7 @@ import jmemorize.gui.swing.actions.edit.FindAction;
 import jmemorize.gui.swing.actions.edit.PasteAction;
 import jmemorize.gui.swing.actions.edit.RemoveAction;
 import jmemorize.gui.swing.actions.edit.ResetCardAction;
-import jmemorize.gui.swing.actions.file.ExitAction;
-import jmemorize.gui.swing.actions.file.ExportToCSVAction;
-import jmemorize.gui.swing.actions.file.ExportToCleanLessonAction;
-import jmemorize.gui.swing.actions.file.ExportToPDFAction;
-import jmemorize.gui.swing.actions.file.ExportToRTFAction;
-import jmemorize.gui.swing.actions.file.ImportCSVAction;
-import jmemorize.gui.swing.actions.file.ImportJMLAction;
-import jmemorize.gui.swing.actions.file.ImportTSVAction;
-import jmemorize.gui.swing.actions.file.NewLessonAction;
-import jmemorize.gui.swing.actions.file.OpenLessonAction;
-import jmemorize.gui.swing.actions.file.OpenRecentLessonAction;
-import jmemorize.gui.swing.actions.file.PreferencesAction;
-import jmemorize.gui.swing.actions.file.SaveLessonAction;
-import jmemorize.gui.swing.actions.file.SaveLessonAsAction;
+import jmemorize.gui.swing.actions.file.*;
 import jmemorize.util.RecentItems;
 import jmemorize.util.RecentItems.RecentItemsObserver;
 
@@ -111,6 +98,7 @@ public class MainMenu extends JMenuBar implements RecentItemsObserver
         editMenu.add(new JMenuItem(new PasteAction(provider)));
         editMenu.addSeparator();
         editMenu.add(new JMenuItem(new RemoveAction(provider)));
+
         
         if (Main.isDevel())
             editMenu.add(new JMenuItem(new RenameCategoryAction(provider)));
@@ -165,6 +153,8 @@ public class MainMenu extends JMenuBar implements RecentItemsObserver
         importMenu.add(new ImportCSVAction());
         importMenu.add(new ImportTSVAction());
         importMenu.add(new ImportJMLAction());
+        // Added by @Abdulrahman Hijazy
+        importMenu.add(new TextFileImportAction());
         
         
         // Sub menu for export menu items 
@@ -179,6 +169,7 @@ public class MainMenu extends JMenuBar implements RecentItemsObserver
         m_fileMenu.addSeparator();
         m_fileMenu.add(importMenu);
         m_fileMenu.add(exportMenu);
+
         
         // add recent files menu items
         int recentFiles = Main.getInstance().getRecentLessonFiles().size();
@@ -192,11 +183,13 @@ public class MainMenu extends JMenuBar implements RecentItemsObserver
         {
             JMenuItem menuItem = new JMenuItem(new OpenRecentLessonAction(i));
             m_fileMenu.add(menuItem);
+
         }
 
         m_fileMenu.addSeparator();
         m_fileMenu.add(new JMenuItem(new PreferencesAction()));
         m_fileMenu.addSeparator();
         m_fileMenu.add(new JMenuItem(new ExitAction()));
+
     }
 }

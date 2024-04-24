@@ -72,6 +72,7 @@ public interface LC
     // -- File -------
     
     public static final String FILE_CSV                               = "File.CSV";
+    public static final String FILE_TXT                               = "Import From a .txt File";
     
     // -- NewCard --------
     
