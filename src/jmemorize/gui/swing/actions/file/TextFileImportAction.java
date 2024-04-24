@@ -53,16 +53,11 @@ public class TextFileImportAction extends AbstractImportAction {
     }
 
     @Override
-    protected FileFilter getFileFilter()
+    protected FileFilter getFileFilter()//filter files to view txt files only
     {
 
-        return null;
+        return new ExtensionFileFilter("txt", Localization.get(LC.FILE_TXT));
     }
-//    protected FileFilter getFileFilter() {
-//        // You can define a custom file filter for text files here if needed
-//       // return null; // or return a specific FileFilter if needed
-//        return new ExtensionFileFilter("csv", Localization.get(LC.FILE_CSV);
-//    }
 
     private void setValues()
     {
